@@ -7,15 +7,17 @@ void setup() {
   gb.begin(); //initialize the Gamebuino
   gb.titleScreen(F("Casse Briques")); //shows the main menu
   initPlayer();
+  initBricks();
+  Serial.println("INIT !!");
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
   if(gb.update()){
     
+    Serial.println("UPDATE !!");
     if(gb.buttons.repeat(BTN_UP, 2)){
-//      p.y -= 1;
-//      gb.sound.playTick();
+
     }
     if(gb.buttons.repeat(BTN_LEFT, 0.5)){
       movePlayerOnLeft();
@@ -26,8 +28,7 @@ void loop() {
       gb.sound.playTick();
     }
     if(gb.buttons.repeat(BTN_DOWN, 2)){
-//      p.y += 1;
-//      gb.sound.playTick();
+
     }
 
     
@@ -42,7 +43,7 @@ void loop() {
       gb.titleScreen(F("Casse Briques")); //shows the main menu
     }
 
-
+    drawBricks();
     drawPlayer();
   }
 }
