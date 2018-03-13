@@ -14,6 +14,14 @@ void initPlayer(){
   p.life = 5;
 }
 
+int getPlayerSize(){
+  return p.size;
+}
+
+int getPlayerPosition(){
+  return p.x;
+}
+
 void drawPlayer(){
   gb.display.drawRect(p.x, Y, p.size, 1);
 }
@@ -36,3 +44,9 @@ void movePlayerOnRight(){
   checkPosition();
 }
 
+
+
+int oponent_x = LCDWIDTH - oponent_w;
+int oponent_y = (LCDHEIGHT - oponent_h) / 2;
+
+int ball_vy = 3;

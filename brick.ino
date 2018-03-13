@@ -1,4 +1,4 @@
-#define BRICKS_NB 10
+#define BRICKS_NB 30
 #define BRICKS_SIZE 5
 
 typedef struct {
@@ -12,15 +12,17 @@ Brick bricks[BRICKS_NB];
 void initBricks(){
   int posX = 1;
   int posY = 1;
+  int tmp = 1;
   
   for(int i = 0; i < BRICKS_NB; ++i){
     bricks[i].x = posX;
     bricks[i].y = posY;
     
     posX += BRICKS_SIZE + 1;
-
-    if(posX >= LCDWIDTH / (BRICKS_SIZE + 1)){
+    
+    if(posX >= LCDWIDTH){
       posY += BRICKS_SIZE + 1;
+      posX = 1;
     }
   }
 }
