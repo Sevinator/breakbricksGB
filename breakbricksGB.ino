@@ -2,12 +2,15 @@
 #include <Gamebuino.h>
 Gamebuino gb;
 
+bool started = false;
+
 void setup() {
   // put your setup code here, to run once:
   gb.begin(); //initialize the Gamebuino
   gb.titleScreen(F("Casse Briques")); //shows the main menu
   initPlayer();
   initBricks();
+  initBall();
   Serial.println("INIT !!");
 }
 
@@ -33,16 +36,25 @@ void loop() {
     
     
     if(gb.buttons.pressed(BTN_A)){
-
+      started = true;
     }
     if(gb.buttons.pressed(BTN_B)){
       
     }
     if(gb.buttons.pressed(BTN_C)){
+      started = false;
       gb.titleScreen(F("Casse Briques")); //shows the main menu
     }
 
-    drawBricks();
+    if(started){
+      updateBallPosition();
+      checkCollision();
+    }else{
+      setBallInitialPosition();
+    }
+
+    //drawBricks();
+    drawBall();
     drawPlayer();
   }
 }

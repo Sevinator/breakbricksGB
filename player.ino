@@ -46,7 +46,13 @@ void movePlayerOnRight(){
 
 
 
-int oponent_x = LCDWIDTH - oponent_w;
-int oponent_y = (LCDHEIGHT - oponent_h) / 2;
 
-int ball_vy = 3;
+
+
+
+
+
+
+
+
+
