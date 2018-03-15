@@ -35,3 +35,12 @@ void drawBricks(){
   }
 }
 
+bool checkBricksCollision(int x, int y, int size){
+  for(int i = 0; i < BRICKS_NB; ++i){
+    if(isInCollision(x, y, size, size, bricks[i].x, bricks[i].y, BRICKS_SIZE, BRICKS_SIZE) != 0){
+      bricks[i].broken = true;
+      return true;
+    }
+  }
+}
+

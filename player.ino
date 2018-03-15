@@ -1,7 +1,8 @@
-#define Y 40
+#define Y_player 40
+#define speed_player 3
 
 typedef struct {
-  int x; // Position de la barre
+  int x, y; // Position de la barre
   int size; // Taille de la barre
   int life; // Essais restants
 }Player;
@@ -9,8 +10,9 @@ typedef struct {
 Player p;
 
 void initPlayer(){
-  p.size = 20;
+  p.size = 25;
   p.x = LCDWIDTH/2 - p.size/2;
+  p.y = Y_player;
   p.life = 5;
 }
 
@@ -18,12 +20,16 @@ int getPlayerSize(){
   return p.size;
 }
 
-int getPlayerPosition(){
+int getPlayerPositionX(){
   return p.x;
 }
 
+int getPlayerPositionY(){
+  return p.y;
+}
+
 void drawPlayer(){
-  gb.display.drawRect(p.x, Y, p.size, 1);
+  gb.display.drawRect(p.x, p.y, p.size, 1);
 }
 
 void checkPosition(){
@@ -35,16 +41,22 @@ void checkPosition(){
 }
 
 void movePlayerOnLeft(){
-  p.x -= 1;
+  p.x -= speed_player;
   checkPosition();
 }
 
 void movePlayerOnRight(){
-  p.x += 1;  
+  p.x += speed_player;  
   checkPosition();
 }
 
+void increaseLife(){
+  ++p.life;
+}
 
+void decreaseLife(){
+  --p.life;
+}
 
 
 
